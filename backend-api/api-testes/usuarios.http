@@ -1,0 +1,13 @@
+### Cadastrar um novo Freelancer
+POST http://localhost:8081/api/usuarios
+Content-Type: application/json
+
+{
+  "nome": "Pedro Lucas",
+  "email": "pedro2@teste.com",
+  "senha": "SenhaForte@2026"
+}
+
+### Listar todos os Freelancers cadastrados
+GET http://localhost:8081/api/usuarios
+Accept: application/json
