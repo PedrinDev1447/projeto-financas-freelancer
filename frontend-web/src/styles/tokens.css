@@ -1,0 +1,10 @@
+:root {
+  --color-bg-base: #202020;      /* Fundo geral da tela */
+  --color-surface: #404040;      /* Fundo do card */
+  --color-surface-dark: #000000; /* Fundo dos inputs */
+  --color-border: #606060;       /* Bordas em geral */
+  --color-primary: #606060;      /* Cor do botão */
+  --color-primary-hover: #808080;/* Efeito hover do botão */
+  --color-text-main: #ffffff;    /* Texto principal (contraste) */
+  --color-text-muted: #808080;   /* Texto secundário/placeholders */
+}
