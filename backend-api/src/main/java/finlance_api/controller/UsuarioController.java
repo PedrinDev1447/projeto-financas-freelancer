@@ -4,6 +4,8 @@ import finlance_api.domain.Usuario;
 import finlance_api.dto.UsuarioCadastroDTO;
 import finlance_api.dto.UsuarioRespostaDTO;
 import finlance_api.service.UsuarioService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,12 +18,13 @@ import java.util.List;
 @RequestMapping("/api/usuarios")
 @CrossOrigin(origins = "http://localhost:4200")
 @RequiredArgsConstructor
+@Tag(name = "Usuários", description = "Endpoints para gerenciamento de usuários e freelancers")
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
 
     @PostMapping
-
+    @Operation(summary = "Cadastrar novo freelancer", description = "Recebe os dados do formulário e salva um novo freelancer no banco de dados")
     public ResponseEntity<String> cadastrar(@Valid @RequestBody UsuarioCadastroDTO dto) {
         
         Usuario novoUsuario = new Usuario();
