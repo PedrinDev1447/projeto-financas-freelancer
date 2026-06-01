@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/usuarios")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequiredArgsConstructor
 public class UsuarioController {
 
@@ -36,5 +37,10 @@ public class UsuarioController {
     @GetMapping
     public ResponseEntity<List<UsuarioRespostaDTO>> listar() {
         return ResponseEntity.ok(usuarioService.listarTodos());
+    }
+
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<String> tratarErroDeNegocio(RuntimeException ex) {
+        return ResponseEntity.badRequest().body(ex.getMessage());
     }
 }
