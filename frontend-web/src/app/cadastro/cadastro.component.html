@@ -1,0 +1,109 @@
+<div class="min-h-screen flex items-center justify-center bg-base px-4 py-12">
+  <div class="w-full max-w-md bg-surface border border-border shadow-2xl text-textMain rounded-xl p-8">
+    <h2 class="text-2xl font-bold text-textMain text-center mb-8">
+      Cadastro de Freelancer
+    </h2>
+
+    <form class="space-y-5">
+      <div>
+        <label for="nome" class="block text-sm font-medium text-textMain mb-1.5">
+          Nome
+        </label>
+        <input
+          type="text"
+          id="nome"
+          name="nome"
+          [(ngModel)]="usuario.nome"
+          class="input-field-depth w-full rounded-lg bg-[#C7D0D7] text-gray-900 border px-4 py-2.5 placeholder:text-textMuted focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
+        />
+      </div>
+
+      <div>
+        <label for="email" class="block text-sm font-medium text-textMain mb-1.5">
+          E-mail
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="usuario.email"
+          class="input-field-depth w-full rounded-lg bg-[#C7D0D7] text-gray-900 border px-4 py-2.5 placeholder:text-textMuted focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
+        />
+      </div>
+
+      <div>
+        <label for="senha" class="block text-sm font-medium text-textMain mb-1.5">
+          Senha
+        </label>
+        <input
+          type="password"
+          id="senha"
+          name="senha"
+          [(ngModel)]="usuario.senha"
+          class="input-field-depth w-full rounded-lg bg-[#C7D0D7] text-gray-900 border px-4 py-2.5 placeholder:text-textMuted focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
+        />
+        <ul class="text-sm mt-2 space-y-1">
+          <li
+            [class.text-green-500]="hasMinLength"
+            [class.text-textMuted]="!hasMinLength"
+          >
+            @if (hasMinLength) { <span>✓ </span> }
+            Mínimo de 8 caracteres
+          </li>
+          <li
+            [class.text-green-500]="hasUpper"
+            [class.text-textMuted]="!hasUpper"
+          >
+            @if (hasUpper) { <span>✓ </span> }
+            Uma letra maiúscula
+          </li>
+          <li
+            [class.text-green-500]="hasLower"
+            [class.text-textMuted]="!hasLower"
+          >
+            @if (hasLower) { <span>✓ </span> }
+            Uma letra minúscula
+          </li>
+          <li
+            [class.text-green-500]="hasNumber"
+            [class.text-textMuted]="!hasNumber"
+          >
+            @if (hasNumber) { <span>✓ </span> }
+            Um número
+          </li>
+          <li
+            [class.text-green-500]="hasSpecial"
+            [class.text-textMuted]="!hasSpecial"
+          >
+            @if (hasSpecial) { <span>✓ </span> }
+            Um caractere especial (!&#64;#$%^&*)
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <label for="confirmarSenha" class="block text-sm font-medium text-textMain mb-1.5">
+          Confirmar Senha
+        </label>
+        <input
+          type="password"
+          id="confirmarSenha"
+          name="confirmarSenha"
+          [(ngModel)]="confirmarSenha"
+          class="input-field-depth w-full rounded-lg bg-[#C7D0D7] text-gray-900 border px-4 py-2.5 placeholder:text-textMuted focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-all duration-300"
+        />
+        @if (confirmarSenha && !passwordsMatch) {
+          <p class="text-red-500 text-sm mt-1">* As senhas não coincidem</p>
+        }
+      </div>
+
+      <button
+        type="button"
+        (click)="salvar()"
+        class="w-full mt-2 rounded-lg bg-primary hover:bg-primary-hover text-textMain px-4 py-3 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-surface transition-all duration-300"
+      >
+        Salvar
+      </button>
+    </form>
+  </div>
+</div>
