@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ToastService } from '../services/toast.service';
 import { UsuarioService } from '../services/usuario.service';
 
 @Component({
@@ -43,6 +44,8 @@ export class CadastroComponent {
     );
   }
 
+  private readonly toastService = inject(ToastService);
+
   constructor(private usuarioService: UsuarioService) {}
 
   salvar(): void {
@@ -59,13 +62,8 @@ export class CadastroComponent {
     }
 
     this.usuarioService.cadastrar(this.usuario).subscribe({
-      next: () => alert('Freelancer cadastrado com sucesso!'),
-      error: (err) =>
-        alert(
-          typeof err.error === 'string'
-            ? err.error
-            : 'Erro ao cadastrar freelancer.'
-        )
+      next: () =>
+        this.toastService.mostrarSucesso('Freelancer cadastrado com sucesso!')
     });
   }
 }

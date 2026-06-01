@@ -1,0 +1,56 @@
+@if (toast.visivel()) {
+  <div
+    class="fixed top-5 right-5 z-50 transition-opacity duration-300 ease-in-out opacity-100"
+    role="alert"
+    aria-live="polite"
+  >
+    <div
+      class="flex items-start gap-3 rounded-lg bg-surfaceDark px-4 py-3 text-textMain shadow-2xl min-w-[280px] max-w-sm border-l-4"
+      [class.border-green-500]="toast.tipo() === 'sucesso'"
+      [class.border-red-500]="toast.tipo() === 'erro'"
+    >
+      @if (toast.tipo() === 'sucesso') {
+        <svg
+          class="mt-0.5 h-5 w-5 shrink-0 text-green-500"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      } @else {
+        <svg
+          class="mt-0.5 h-5 w-5 shrink-0 text-red-500"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      }
+      <p class="flex-1 text-sm leading-snug">{{ toast.mensagem() }}</p>
+      <button
+        type="button"
+        class="shrink-0 text-textMuted transition-colors hover:text-textMain"
+        aria-label="Fechar notificação"
+        (click)="toast.fechar()"
+      >
+        <svg class="h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path
+            d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+}

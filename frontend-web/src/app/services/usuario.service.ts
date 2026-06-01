@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { Usuario } from '../models/usuario.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +12,7 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) {}
 
-  cadastrar(usuario: any) {
+  cadastrar(usuario: Usuario): Observable<string> {
     return this.http.post(this.apiUrl, usuario, { responseType: 'text' });
   }
 }
